@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Setila | Digital Artist & Portfolio</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+   :root {
+       --bg-base: #fdf8fa;
+       --card-bg: rgba(255, 255, 255, 0.82);
+       --primary-pink: #f27294;
+       --accent-pink: #e0537a;
+       --soft-pink-btn: #fce8ef;
+       --dark-text: #2d2427;
+       --text-muted: #7d6b73;
+       --border-light: rgba(242, 114, 148, 0.15);
+       --shadow-subtle: 0 10px 30px -5px rgba(224, 83, 122, 0.08);
+       --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.03);
+   }
+
+   * { box-sizing: border-box; margin: 0; padding: 0; }
+
+   body {
+       font-family: 'Plus Jakarta Sans', sans-serif;
+       background-color: var(--bg-base);
+       background-image:
+           radial-gradient(at 10% 10%, rgba(252, 232, 239, 0.8) 0px, transparent 50%),
+           radial-gradient(at 90% 90%, rgba(242, 114, 148, 0.12) 0px, transparent 50%);
+       background-attachment: fixed;
+       color: var(--dark-text);
+       min-height: 100vh;
+       padding: 30px 20px;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+   }
+
+   a { color: var(--accent-pink); text-decoration: none; transition: all 0.2s ease; }
+   a:hover { color: var(--primary-pink); }
+
+   .navbar {
+       width: 100%; max-width: 1100px; display: flex; justify-content: space-between; align-items: center;
+       padding: 14px 28px; background: var(--card-bg); backdrop-filter: blur(16px);
+       border-radius: 20px; border: 1px solid var(--border-light); margin-bottom: 28px; box-shadow: var(--shadow-subtle);
+   }
+
+   .logo-area { display: flex; align-items: center; gap: 12px; }
+   .heart-logo-container { width: 38px; height: 38px; }
+   #top-heart-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--border-light); }
+   .logo-text { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; color: var(--dark-text); font-weight: 700; }
+
+   .nav-links { display: flex; gap: 20px; align-items: center; }
+   .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.9rem; }
+   .nav-links a:hover { color: var(--accent-pink); }
+
+   .main-workspace { display: grid; grid-template-columns: 1fr 310px; gap: 24px; width: 100%; max-width: 1100px; }
+   .left-content-area { display: flex; flex-direction: column; gap: 24px; }
+
+   .hero-intro-card, .tabs-category-bar, .active-tab-display-panel, .sidebar-card, .prices-box-sidebar, .socials-box-sidebar {
+       background: var(--card-bg); backdrop-filter: blur(16px); border-radius: 20px; padding: 24px; border: 1px solid var(--border-light); box-shadow: var(--shadow-subtle);
+   }
+
+   .hero-title { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; color: var(--dark-text); font-weight: 700; }
+   .hero-subline { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 10px 0 16px 0; }
+   .handle-tag { font-weight: 600; color: var(--text-muted); font-size: 0.88rem; }
+   .comms-status-badge { background: #fef3c7; color: #92400e; font-weight: 700; font-size: 0.72rem; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; }
+
+   .welcome-tag { color: var(--accent-pink); font-weight: 600; font-size: 0.9rem; margin-bottom: 12px; }
+   .bio-intro-line { font-weight: 700; font-size: 0.88rem; margin-bottom: 6px; color: var(--dark-text); }
+   .skills-inline-list { font-size: 0.88rem; line-height: 1.6; color: var(--text-muted); font-weight: 500; margin-bottom: 14px; }
+   .bio-hours-note { font-size: 0.8rem; color: var(--text-muted); }
+
+   .tabs-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; color: var(--dark-text); margin-bottom: 14px; font-weight: 700; }
+   .tabs-grid { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+   .tab-btn {
+       background: rgba(255, 255, 255, 0.7); border: 1px solid var(--border-light); padding: 8px 14px;
+       border-radius: 12px; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: all 0.2s ease;
+   }
+   .tab-btn:hover { background: var(--soft-pink-btn); color: var(--accent-pink); }
+   .tab-btn.active-tab { background: var(--accent-pink); color: white; border-color: var(--accent-pink); }
+
+   .category-header-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; color: var(--dark-text); font-weight: 700; margin-bottom: 4px; }
+   .category-subtitle { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; font-weight: 500; }
+
+   .art-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+   .placeholder-box { background: rgba(255, 255, 255, 0.4); border: 1px dashed var(--border-light); border-radius: 14px; padding: 40px 20px; text-align: center; font-size: 0.85rem; color: var(--text-muted); grid-column: 1 / -1; }
+
+   .art-card { background: #ffffff; border-radius: 14px; padding: 8px; border: 1px solid var(--border-light); display: flex; flex-direction: column; align-items: center; box-shadow: var(--shadow-card); }
+   .art-img-wrapper { width: 100%; height: 200px; border-radius: 10px; background: #fafafa; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+   .art-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+   .art-caption { font-size: 0.78rem; font-weight: 600; margin-top: 8px; color: var(--dark-text); text-align: center; }
+
+   .right-sidebar-area { display: flex; flex-direction: column; gap: 24px; }
+   .sidebar-card { display: flex; flex-direction: column; align-items: center; position: relative; }
+
+   .discord-banner { width: 100%; height: 80px; background: linear-gradient(135deg, #fce8ef 0%, #fbcfe8 100%); border-radius: 14px 14px 0 0; position: absolute; top: 0; left: 0; }
+   .avatar-speech-cloud { position: absolute; top: 20px; right: 12px; background: #ffffff; color: var(--accent-pink); padding: 5px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 700; border: 1px solid var(--border-light); z-index: 12; }
+
+   .avatar-wrapper { position: relative; margin-top: 30px; margin-bottom: 10px; width: 76px; height: 76px; }
+   #discord-avatar { width: 100%; height: 100%; border-radius: 50%; border: 3px solid white; object-fit: cover; }
+
+   .user-id-title h2 { font-size: 1.1rem; color: var(--dark-text); font-family: 'Space Grotesk', sans-serif; font-weight: 700; text-align: center; }
+   .user-handle { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; display: block; text-align: center; }
+
+   .discord-bio-box { background: rgba(255, 255, 255, 0.6); border-radius: 12px; padding: 12px; margin: 12px 0; font-size: 0.78rem; line-height: 1.4; width: 100%; color: var(--dark-text); border: 1px solid var(--border-light); }
+
+   .payment-badges-container { width: 100%; margin-bottom: 12px; }
+   .badge-title { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; }
+   .badges { display: flex; gap: 6px; flex-wrap: wrap; }
+   .badge { background: var(--soft-pink-btn); color: var(--accent-pink); padding: 4px 8px; border-radius: 8px; font-size: 0.7rem; font-weight: 600; }
+
+   .side-section-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; color: var(--dark-text); font-weight: 700; margin-bottom: 12px; }
+   .price-card-item { background: rgba(255, 255, 255, 0.6); border-radius: 12px; padding: 10px 12px; border: 1px solid var(--border-light); margin-bottom: 8px; }
+   .price-card-item h4 { font-size: 0.82rem; color: var(--dark-text); margin-bottom: 2px; font-weight: 700; }
+   .price-card-item p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.3; font-weight: 500; }
+
+   .socials-box-sidebar { display: flex; flex-direction: column; gap: 8px; }
+   .social-link-btn { background: rgba(255, 255, 255, 0.7); border: 1px solid var(--border-light); border-radius: 12px; padding: 10px 12px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--dark-text); }
+   .social-icon { font-size: 1.1rem; color: var(--accent-pink); }
+   .social-title { font-family: 'Space Grotesk', sans-serif; font-size: 0.82rem; font-weight: 700; display: block; color: var(--dark-text); }
+   .social-sub { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
+
+   .footer-bar { text-align: center; margin-top: 40px; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); width: 100%; }
+
+   @media (max-width: 850px) {
+       .main-workspace { grid-template-columns: 1fr; }
+       .right-sidebar-area { order: -1; }
+   }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+   <div class="logo-area">
+       <div class="heart-logo-container">
+           <img id="top-heart-img" src="https://api.dicebear.com/7.x/shapes/svg?seed=SetilaHeart&backgroundColor=fce8ef" alt="Logo">
+       </div>
+       <span class="logo-text">Setila</span>
+   </div>
+   <nav class="nav-links">
+       <a href="#">Home</a>
+       <a href="#">Portfolio</a>
+       <a href="#">Prices</a>
+       <a href="#">Contact</a>
+   </nav>
+</header>
+
+<main class="main-workspace">
+   <div class="left-content-area">
+       <section class="hero-intro-card">
+           <h1 class="hero-title">Setila</h1>
+           <div class="hero-subline">
+               <span class="handle-tag">@svetilalcve</span>
+               <span class="comms-status-badge">Comms Closed</span>
+           </div>
+           <p class="welcome-tag">Digital Art & Illustration Portfolio</p>
+           <div class="hero-bio-text">
+               <p class="bio-intro-line">Work Offered:</p>
+               <p class="skills-inline-list">Custom Icons • Half Body • Full Body • Chibis • Profile Decor • Reference Sheets • Emotes • Sketches • Animations</p>
+           </div>
+           <p class="bio-hours-note">Commission Hours: 6–9 PM & 2 PM (PST)</p>
+       </section>
+
+       <section class="tabs-category-bar">
+           <h2 class="tabs-title">PORTFOLIO WORKS</h2>
+           <div class="tabs-grid" id="tabs-container"></div>
+       </section>
+
+       <section class="active-tab-display-panel">
+           <div class="category-header-title">
+               <span id="active-tab-title">Icons & Headshots</span>
+           </div>
+           <p id="active-tab-subtitle" class="category-subtitle">Custom profile icons, avatars, and headshots.</p>
+           <div id="active-art-grid" class="art-grid"></div>
+       </section>
+   </div>
+
+   <aside class="right-sidebar-area">
+       <div class="sidebar-card">
+           <div class="discord-banner"></div>
+           <div class="avatar-speech-cloud">COMMS CLOSED</div>
+           <div class="profile-header">
+               <div class="avatar-wrapper">
+                   <img id="discord-avatar" src="https://cdn.discordapp.com/avatars/1354241005985071194/367e88ea38d536818ca3d88574518a53.png" alt="Setila Avatar">
+               </div>
+               <div class="user-id-title">
+                   <h2>Setila</h2>
+                   <span class="user-handle">@svetilalcve</span>
+               </div>
+           </div>
+           <div class="discord-bio-box">
+               <p>Beginner Digital Artist & Animator. DM for Commissions/Inquiries.
+
+Working hours: 6-9 PM & 2 PM (PST).</p>
+           </div>
+           <div class="payment-badges-container">
+               <p class="badge-title">Accepted Payments:</p>
+               <div class="badges">
+                   <span class="badge">Robux</span>
+                   <span class="badge"><i class="fas fa-paint-brush"></i> Decor</span>
+                   <span class="badge"><i class="fas fa-bolt"></i> Nitro</span>
+               </div>
+           </div>
+       </div>
+
+       <div class="prices-box-sidebar">
+           <h3 class="side-section-title">RATES</h3>
+           <div class="price-card-item">
+               <h4>Headshot / Icon</h4>
+               <p>1 Month Nitro / 800 Robux / 1 Decor</p>
+           </div>
+           <div class="price-card-item">
+               <h4>Half Body</h4>
+               <p>2 Months Nitro / 1500 Robux / 2 Decors</p>
+           </div>
+           <div class="price-card-item">
+               <h4>Full Body</h4>
+               <p>3 Months Nitro / 2500 Robux / 3 Decors</p>
+           </div>
+       </div>
+
+       <div class="socials-box-sidebar">
+           <h3 class="side-section-title">CONNECT</h3>
+           <a href="https://discord.gg/KK8rYK4gDd" target="_blank" class="social-link-btn">
+               <i class="fab fa-discord social-icon"></i>
+               <div>
+                   <span class="social-title">DISCORD SERVER</span>
+                   <span class="social-sub">Setila's Art Hub</span>
+               </div>
+           </a>
+       </div>
+   </aside>
+</main>
+
+<footer class="footer-bar">
+   <p>ALL RIGHTS RESERVED SETILA</p>
+</footer>
+
+<script>
+  // Add your image URLs inside the corresponding categories here
+  const portfolioData = {
+      1: [
+          // { url: "https://your-image-link-here.png", caption: "Icon Example 1" }
+      ],
+      2: [],
+      3: [],
+      4: [],
+      5: []
+  };
+
+  const categories = {
+      1: { tabLabel: "Icons & Headshots", title: "Icons & Headshots", sub: "Custom profile icons, avatars, and headshots." },
+      2: { tabLabel: "Half Body Art", title: "Half Body Art", sub: "Detailed waist-up artwork." },
+      3: { tabLabel: "Full Body Art", title: "Full Body Art", sub: "Full body character illustrations." },
+      4: { tabLabel: "Custom Chibis", title: "Custom Chibis", sub: "Mini chibi styled artwork." },
+      5: { tabLabel: "Animations", title: "Animations & GIFs", sub: "Animated icons and custom GIFs." }
+  };
+
+  let currentActiveTab = 1;
+
+  document.addEventListener("DOMContentLoaded", () => {
+      renderTabs();
+      renderActiveTab();
+  });
+
+  function renderTabs() {
+      const container = document.getElementById("tabs-container");
+      container.innerHTML = "";
+      Object.keys(categories).forEach(key => {
+          const tabId = parseInt(key);
+          const btn = document.createElement("button");
+          btn.className = `tab-btn ${tabId === currentActiveTab ? "active-tab" : ""}`;
+          btn.innerText = categories[tabId].tabLabel;
+          btn.onclick = () => {
+              currentActiveTab = tabId;
+              renderTabs();
+              renderActiveTab();
+          };
+          container.appendChild(btn);
+      });
+  }
+
+  function renderActiveTab() {
+      document.getElementById("active-tab-title").innerText = categories[currentActiveTab].title;
+      document.getElementById("active-tab-subtitle").innerText = categories[currentActiveTab].sub;
+      
+      const gridEl = document.getElementById("active-art-grid");
+      gridEl.innerHTML = "";
+      const items = portfolioData[currentActiveTab] || [];
+
+      if (items.length === 0) {
+          gridEl.innerHTML = `<div class="placeholder-box">No artwork uploaded for this category yet.</div>`;
+      } else {
+          items.forEach(item => {
+              const card = document.createElement("div");
+              card.className = "art-card";
+              const captionHTML = item.caption ? `<p class="art-caption">${item.caption}</p>` : "";
+              card.innerHTML = `<div class="art-img-wrapper"><img src="${item.url}" class="art-img" alt="Artwork"></div>${captionHTML}`;
+              gridEl.appendChild(card);
+          });
+      }
+  }
+</script>
+</body>
+</html>
